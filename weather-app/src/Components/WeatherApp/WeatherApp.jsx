@@ -35,7 +35,7 @@ const WeatherApp = () => {
                 <div className="element">
                     <img src={wind_icon} alt="" className="icon"/>
                     <div className="data">
-                        <div className="wind-speed">19 km/h</div>
+                        <div className="wind-speed">20 km/h</div>
                         <div className="text">Wind Speed</div>
                     </div>
                 </div>

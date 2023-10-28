@@ -14,13 +14,23 @@ const WeatherApp = () => {
 
     const api_key = "4b2a0fb490c3400ba1278338a743366e"
     const search = async () => {
-        const element = document.getElementsByClassName("cityInpit")
+        const element = document.getElementsByClassName("cityInput")
         if (element[0].value === "") {
             return 0
         }
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}}&units=Metric&appid=${api_key}`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=4b2a0fb490c3400ba1278338a743366e`;
         let response = await fetch(url)
-        let data = response.json();
+        let data = await response.json();
+        const humidity = document.getElementsByClassName("humidity-percent")
+        const wind = document.getElementsByClassName("wind-rate")
+        const temperature = document.getElementsByClassName("weather-temp")
+        const location = document.getElementsByClassName("weather-location")
+
+        humidity[0].innerHTML = data.main.humidity;
+        console.log(data)
+        wind[0].innerHTML = data.wind.speed;
+        temperature[0].innerHTML = data.main.temp;
+        location[0].innerHTML = data.name;
     }
     return (
         <div className='container'>
@@ -48,7 +58,7 @@ const WeatherApp = () => {
                 <div className="element">
                     <img src={wind_icon} alt="" className="icon"/>
                     <div className="data">
-                        <div className="wind-speed">21 km/h</div>
+                        <div className="wind-rate">21 km/h</div>
                         <div className="text">Wind Speed</div>
                     </div>
                 </div>
